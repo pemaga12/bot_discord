@@ -9,7 +9,7 @@ const prefix = config.prefix;
 
 //vars used
 var ip = 0;
-var url = "http://mcapi.us/server/status?ip=";
+var url = "https://mcapi.us/server/status?ip=";
 var request = require('request');
 
 client.on("ready", () => {
@@ -45,8 +45,8 @@ client.on("message", (message) => {
   else if (message.content.startsWith(prefix + "set")) {
     var messagesp = message.content.split(" ");
     ip = messagesp[1];
-    url += ip;
-    message.channel.send("se ha configurado la ip "+ ip + url + " al bot 👍");
+    url = "https://mcapi.us/server/status?ip=" + ip;
+    message.channel.send("se ha configurado la ip "+ ip + " al bot 👍");
   }
 
   else if (message.content.startsWith(prefix + "status")) {
@@ -59,15 +59,14 @@ client.on("message", (message) => {
         const embed = new Discord.RichEmbed() 
         .setTitle("Estado del servidor")
         .setColor(0x00AE86)
-        .setFooter(client.user.avatarURL, client.user.username)
-        .addField("Estado del servidor: Online :white_check_mark:", true)
-        .addBlankField(true)
-        .addField("Nombre del servidor: " + body.motd, true)
-        .addBlankField(true)
-        .addField("Hay " + body.players.now + " jugando de " + body.players.max, true)
+        .setFooter(client.user.username, client.user.avatarURL)
+        .addField("Estado del servidor:", "Online :white_check_mark:")
+        .addField("Nombre del servidor:", body.motd)
+        .addField("Versión del servidor:", body.server.name)
+        .addField("Numero de jugadores:", "hay " + body.players.now + " jugando de " + body.players.max,)
         message.channel.send({embed});
       }
-      else{
+      else if (!body.online){
         message.channel.send("El servidor no se encuentra disponible...")
       }
     })
