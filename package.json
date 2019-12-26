@@ -1,7 +1,6 @@
 {
   "name": "bot_discord",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,6 +9,17 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "discord.js": "^11.5.1"
-  }
+    "discord.js": "^11.5.1",
+    "request": "^2.88.0"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pemaga12/bot_discord.git"
+  },
+  "bugs": {
+    "url": "https://github.com/pemaga12/bot_discord/issues"
+  },
+  "homepage": "https://github.com/pemaga12/bot_discord#readme",
+  "description": ""
 }
